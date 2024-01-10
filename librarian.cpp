@@ -67,3 +67,10 @@ bool Librarian::isValidEmail(const std::string& email) const {
 bool Librarian::isValidSalary(int salary) const {
     return salary > 0;
 }
+const std::string Librarian::fixedName = "abc";
+const std::string Librarian::fixedAddress = "london";
+const std::string Librarian::fixedEmail = "abc@gmail.com";
+
+bool Librarian::doDetailsMatch() const {
+    return staffId == fixedStaffId && name == fixedName && address == fixedAddress && email == fixedEmail && salary == fixedSalary;
+}
