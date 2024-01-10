@@ -1,0 +1,3 @@
+Book ID: 151,Name:  Carmilla,Author:  Joseph Sheridan LeFanu,Member ID: 1,Issue Date: 2024-01-08,Return Date: 2024-01-11
+Book ID: 30,Name:  The Noble Gases,Author:  Isaac Asimov,Member ID: 12,Issue Date: 2024-01-12,Return Date: 2024-01-15
+Book ID: 162,Name: Famous Ghost Stories,Author: Amelia B.Edwards,Member ID: 1,Issue Date: 2024-01-08,Return Date: 2024-01-11
