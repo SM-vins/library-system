@@ -1,2 +1,0 @@
-Book ID: 162,Name: Famous Ghost Stories,Author: Amelia B.Edwards,Member ID: 1,Issue Date: 2024-01-08,Return Date: 2024-01-11
-Book ID: 123,Name:  Stories of Ohio,Author:  William Dean Howells,Member ID: 3,Issue Date: 2024-01-10,Return Date: 2024-01-13
