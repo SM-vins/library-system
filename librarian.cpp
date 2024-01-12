@@ -13,8 +13,8 @@ void Librarian::enterDetails() {
         std::cout << "Staff ID (positive integer): ";
         if(!(std::cin >> staffId) || !isValidStaffId(staffId)) {
             std::cout << "Error: Please enter a valid, positive integer for the staff ID.\n";
-            std::cin.clear(); // Clear error flag
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard input
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
         }
     } while (!isValidStaffId(staffId));
 

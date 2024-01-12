@@ -18,27 +18,14 @@ void showMenu() {
     std::cout << "----------------------------------\n";
     std::cout << "Enter your choice: ";
 }
+
 int main() {
-    int startupChoice;
-    std::cout << "1. New User\n";
-    std::cout << "2. Login\n";
-    std::cout << "Enter your choice: ";
-    std::cin >> startupChoice;
-
-    if (startupChoice == 1) {
-        // New User Registration
-        Librarian librarian;
-        librarian.enterDetails();
-    
-    } else if (startupChoice == 2) {
-        // Login Process (not implemented yet)
-        std::cout << "Login feature coming soon.\n";
-    } else {
-        std::cout << "Invalid choice.\n";
-        return 0;
+    Librarian librarian;
+    librarian.enterDetails();
+  if (!librarian.doDetailsMatch()) {
+        std::cout << "Error: Entered details do not match the required details.\n";
+        return 1; // Exit the program or handle as needed
     }
-
-
     // Clear the screen
     system("clear"); 
     int memberId;
@@ -51,7 +38,7 @@ int main() {
 
 
 
-            case 1:
+            case 1://option for add member
                  {
         Member member;
         member.enterDetails();
@@ -71,7 +58,7 @@ case 2: // Option for issuing a book
 
         std::string selectedType;
         std::cout << "Enter the type of book you want: ";
-        std::cin.ignore(); // To clear the newline character left in the stream
+        std::cin.ignore(); 
         std::getline(std::cin, selectedType);
         Book::displayBooksByType(selectedType);
 
@@ -107,12 +94,12 @@ case 2: // Option for issuing a book
     break;
     }
     }
-            case 4:
+            case 4:// option for display all borrowed books
  Book::displayAllBorrowedBooks();
 
                 break;
        
-case 5:
+case 5:// option for calculate the fine
     std::cout << "Enter Member ID: ";
     std::cin >> memberId;
     Book::calculateFine(memberId);

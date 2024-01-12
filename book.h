@@ -19,7 +19,7 @@ private:
     static std::vector<std::string> readBooksFromFile();
     static std::set<std::string> extractBookTypes(const std::vector<std::string>& books);
 
-    // ... Rest of the class ...
+   
 };
 
 #endif // BOOK_H

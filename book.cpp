@@ -11,7 +11,7 @@
 #include <ctime>
 #include <algorithm>
 
-// ... other existing code ...
+
 
 const std::string BOOKS_FILE = "books.csv";
 
@@ -39,8 +39,8 @@ std::set<std::string> Book::extractBookTypes(const std::vector<std::string>& boo
         while (getline(iss, segment, ',')) {
             seglist.push_back(segment);
         }
-        if (seglist.size() > 4) { // Assuming type is the 5th element
-            types.insert(seglist[4]); // Inserting type into set
+        if (seglist.size() > 4) { 
+            types.insert(seglist[4]); 
         }
     }
     return types;
@@ -83,22 +83,21 @@ bool Book::borrowBookById(int bookId, int memberId) {
 
         if (bookIdStr == std::to_string(bookId)) {
             bookFound = true;
-            break; // Found the book, no need to continue
+            break; 
         }
     }
 
     if (bookFound) {
-        // Get the current date as the issue date
+       
         auto now = std::chrono::system_clock::now();
         std::time_t issueTime = std::chrono::system_clock::to_time_t(now);
         std::tm* issueDate = std::localtime(&issueTime);
 
-        // Calculate the return date (3 days from now)
+       
         std::tm returnDate = *issueDate;
-        returnDate.tm_mday += 3; // Add 3 days
-        mktime(&returnDate); // Normalize the date
-
-        // Write borrowing details to the file with the new format
+        returnDate.tm_mday += 3; 
+        mktime(&returnDate); 
+        
         std::ofstream outFile("borrow-book_details.txt", std::ios::app);
         if (outFile) {
             outFile << "Book ID: " << bookId 
@@ -199,7 +198,7 @@ void Book::calculateFine(int memberId) {
     std::ifstream inFile("borrow-book_details.txt");
     std::string line;
     int totalFine = 0;
-    const int finePerDay = 1;  // Assuming £1 per day as fine
+    const int finePerDay = 1;
 
     auto now = std::chrono::system_clock::now();
 
@@ -213,20 +212,20 @@ void Book::calculateFine(int memberId) {
                 seglist.push_back(segment);
             }
 
-            // Assuming the return date is the last segment
+        
             std::string returnDateStr = seglist.back();
-            returnDateStr = returnDateStr.substr(returnDateStr.find(":") + 2); // Extract date part
+            returnDateStr = returnDateStr.substr(returnDateStr.find(":") + 2); 
 
             std::tm returnDate = {};
             std::istringstream returnDateStream(returnDateStr);
             returnDateStream >> std::get_time(&returnDate, "%Y-%m-%d");
 
-            // Convert returnDate to time_t for comparison
+          
             std::time_t returnTime = std::mktime(&returnDate);
             auto returnTimePoint = std::chrono::system_clock::from_time_t(returnTime);
 
             if (now > returnTimePoint) {
-                // Calculate the number of days late
+               
                 auto duration = std::chrono::duration_cast<std::chrono::hours>(now - returnTimePoint).count();
                 int daysLate = duration / 24;
                 totalFine += daysLate * finePerDay;
